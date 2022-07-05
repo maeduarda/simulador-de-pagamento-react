@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/simulador-de-pagamento-react/static/css/main.cd4ccac7.css",
+    "main.js": "/simulador-de-pagamento-react/static/js/main.3a1472b7.js",
+    "static/js/787.31b13212.chunk.js": "/simulador-de-pagamento-react/static/js/787.31b13212.chunk.js",
+    "index.html": "/simulador-de-pagamento-react/index.html",
+    "main.cd4ccac7.css.map": "/simulador-de-pagamento-react/static/css/main.cd4ccac7.css.map",
+    "main.3a1472b7.js.map": "/simulador-de-pagamento-react/static/js/main.3a1472b7.js.map",
+    "787.31b13212.chunk.js.map": "/simulador-de-pagamento-react/static/js/787.31b13212.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd4ccac7.css",
+    "static/js/main.3a1472b7.js"
+  ]
+}
