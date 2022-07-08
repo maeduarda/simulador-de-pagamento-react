@@ -93,5 +93,8 @@ body {
   
   .required {
       color: red; 
+      text-align: center;
+      font-size: 12px;
+      
   }
   
