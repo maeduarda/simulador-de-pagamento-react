@@ -42,7 +42,7 @@ import NumberFormat from 'react-number-format';
     console.log(valueCards)
     let [valueMoney, setValueMoney] = useState(''); // constante para pegar o valor 
     let [required, setRequired] = useState('none'); // constante de validação do campo 
-    let [paymentError, setPaymentError] = useState("");
+    let [paymentError, setpaymentError] = useState("");
     
 
     
@@ -62,32 +62,19 @@ import NumberFormat from 'react-number-format';
     function inputChange(e) {
         setValueMoney(e.target.value);
     }
-
     
     // função do modal de recibo
     function openModalResult() {
         if(valueMoney === ""){
             setRequired('block')
-        } else {
-            axios
-            .post(
-              "https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989",
-              
-            )
-            .then((response) => {
-              console.log(response);
-              if (response.data.status === "Aprovada") {
-                setPaymentError("O pagamento foi concluído com sucesso!");
-              
-              } else if (response.data.status !== "Aprovada") {
-                setPaymentError("O pagamento não foi concluído com sucesso");
-                
-              }
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+        } else{
+            if(valueCards==='1'){
+                setpaymentError('')
 
+            }else{
+                setpaymentError('não')
+               
+            }
             setValueMoney('')
             setModalIsResultOpen(true)
             setRequired('none')
@@ -154,7 +141,7 @@ import NumberFormat from 'react-number-format';
            onRequestClose={closeModalPayment}
            >
                <span>Recibo de pagamento</span>
-               <p>{paymentError}</p>
+               <p>O pagamento <strong>{paymentError}</strong> foi concluído com sucesso</p>
                <button onClick={()=>{closeModalPayment()}}>Fechar</button>
            </Modal>
       </>
