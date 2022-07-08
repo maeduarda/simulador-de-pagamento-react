@@ -62,15 +62,23 @@ import NumberFormat from 'react-number-format';
         setValueMoney(e.target.value);
     }
 
+    
+    const POSTObject = {
+        UsuarioName,
+        valueMoney,
+        valueCards,
+      };
+
     // função do modal de recibo
     function openModalResult() {
+       
         if(valueMoney === ""){
             setRequired('block')
         } else{
             axios
             .post(
               "https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989",
-
+              POSTObject
             )
             .then((response) => {
               console.log(response);
@@ -136,8 +144,8 @@ import NumberFormat from 'react-number-format';
                 <p className='required' style={{display:required}}>Campo obrigatório</p>
                 </div>
                 <select onChange={handleChange}>
-                    {cards.map((card, index) => (
-                        <option key={index} value="index">
+                    {cards.map((card) => (
+                        <option key={card.card_number}>
                             Cartão com final: {card.card_number.substr(-4)}
                         </option>
                     ))}
