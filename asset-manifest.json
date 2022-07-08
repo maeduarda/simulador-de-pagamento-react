@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/simulador-de-pagamento-react/static/css/main.981afa06.css",
-    "main.js": "/simulador-de-pagamento-react/static/js/main.8b03ff69.js",
+    "main.js": "/simulador-de-pagamento-react/static/js/main.9d4f103c.js",
     "static/js/787.31b13212.chunk.js": "/simulador-de-pagamento-react/static/js/787.31b13212.chunk.js",
     "index.html": "/simulador-de-pagamento-react/index.html",
     "main.981afa06.css.map": "/simulador-de-pagamento-react/static/css/main.981afa06.css.map",
-    "main.8b03ff69.js.map": "/simulador-de-pagamento-react/static/js/main.8b03ff69.js.map",
+    "main.9d4f103c.js.map": "/simulador-de-pagamento-react/static/js/main.9d4f103c.js.map",
     "787.31b13212.chunk.js.map": "/simulador-de-pagamento-react/static/js/787.31b13212.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.981afa06.css",
-    "static/js/main.8b03ff69.js"
+    "static/js/main.9d4f103c.js"
   ]
 }
