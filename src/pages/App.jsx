@@ -71,7 +71,7 @@ import NumberFormat from 'react-number-format';
 
     // função do modal de recibo
     function openModalResult() {
-       
+        console.log(POSTObject)
         if(valueMoney === ""){
             setRequired('block')
         } else{
@@ -97,8 +97,6 @@ import NumberFormat from 'react-number-format';
             setValueMoney('')
             setModalIsResultOpen(true)
             setRequired('none')
-
-
         }
     }
 
@@ -108,13 +106,10 @@ import NumberFormat from 'react-number-format';
         setIsOpen(false);
     }
 
-    //função para chamar os valores dos cartões
+
     function handleChange(e) {
         setValueCards(cards[+e.target.value]);
     }
-
-
-
 
     return(
         <>
@@ -127,12 +122,13 @@ import NumberFormat from 'react-number-format';
                         <p className='userName'>Nome do Usuário {user.name}</p>
                         <p className='userId'>ID: {user.id} - Username: {user.username}</p>
                     </div>
-                <button className='button' onClick={()=>{openModal(user.name)}}>Pagar</button>
+                <button type='submit' className='button' onClick={()=>{openModal(user.name)}}>Pagar</button>
             </div>
 
             )
         })}
          {/* Modal para o pagamento */}
+    
          <Modal
                 className='modal'
                 isOpen={modalIsOpen}
@@ -140,7 +136,7 @@ import NumberFormat from 'react-number-format';
                 >
                 <span>Pagamento para <b>{UsuarioName}</b></span>
                 <div>
-                <NumberFormat thousandSeparator={true}  prefix={'R$ '} inputmode="numeric" onChange={inputChange} placeholder="R$ 0,00"/>
+                <NumberFormat thousandSeparator={true}  prefix={'R$ '} inputmode="numeric" onChange={inputChange} placeholder="R$ 0,00" value={valueMoney}/>
                 <p className='required' style={{display:required}}>Campo obrigatório</p>
                 </div>
                 <select onChange={handleChange}>
