@@ -30,23 +30,22 @@ import NumberFormat from 'react-number-format';
             expiry_date: '01/20',
             },
         ];
-    
-   
-        
+
+
+
     const [modalIsOpen, setIsOpen] = React.useState(false); //constante do modal de pagamento
     const [modalResultIsOpen, setModalIsResultOpen] = React.useState(false); //constante do modal de recibo
- 
-    
-    let [UsuarioName, setUsuarioName] = useState("");  //constante para pegar o nome do usuário
-    let [valueCards, setValueCards] = useState('1');  // constante para mostrar  cartões no select
-    console.log(valueCards)
-    let [valueMoney, setValueMoney] = useState(''); // constante para pegar o valor 
-    let [required, setRequired] = useState('none'); // constante de validação do campo 
-    let [paymentError, setpaymentError] = useState("");
-    
 
-    
-        
+
+    let [UsuarioName, setUsuarioName] = useState("");  //constante para pegar o nome do usuário
+    let [valueCards, setValueCards] = useState({});  // constante para mostrar  cartões no select
+    let [valueMoney, setValueMoney] = useState(''); // constante para pegar o valor 
+    let [required, setRequired] = useState('none'); // constante de validaçãodo campo 
+    let [paymentError, setPaymentError] = useState("");
+
+
+
+
     //função que abre o modal de pagamento e envia o nome do usuário
     function openModal(name) {
         setIsOpen(true);
@@ -62,24 +61,36 @@ import NumberFormat from 'react-number-format';
     function inputChange(e) {
         setValueMoney(e.target.value);
     }
-    
+
     // função do modal de recibo
     function openModalResult() {
         if(valueMoney === ""){
             setRequired('block')
         } else{
-            if(valueCards==='1'){
-                setpaymentError('')
+            axios
+            .post(
+              "https://run.mocky.io/v3/533cd5d7-63d3-4488-bf8d-4bb8c751c989",
 
-            }else{
-                setpaymentError('não')
-               
-            }
+            )
+            .then((response) => {
+              console.log(response);
+              if (response.data.status === "Aprovada") {
+                setPaymentError("O pagamento foi concluído com sucesso!");
+
+              } else if (response.data.status !== "Aprovada") {
+                setPaymentError("O pagamento não foi concluído com sucesso");
+
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+
             setValueMoney('')
             setModalIsResultOpen(true)
             setRequired('none')
-           
-            
+
+
         }
     }
 
@@ -95,13 +106,13 @@ import NumberFormat from 'react-number-format';
     }
 
 
-    
+
 
     return(
         <>
         {users.map((user, index) =>{
             return (
-                  
+
             <div className='accountContainer' key={'user'+index}>
                     <img className='imageUser' src={user.img} alt=""/>
                     <div className='infoUser'>
@@ -110,7 +121,7 @@ import NumberFormat from 'react-number-format';
                     </div>
                 <button className='button' onClick={()=>{openModal(user.name)}}>Pagar</button>
             </div>
-            
+
             )
         })}
          {/* Modal para o pagamento */}
@@ -141,11 +152,11 @@ import NumberFormat from 'react-number-format';
            onRequestClose={closeModalPayment}
            >
                <span>Recibo de pagamento</span>
-               <p>O pagamento <strong>{paymentError}</strong> foi concluído com sucesso</p>
+               <p>{paymentError}</p>
                <button onClick={()=>{closeModalPayment()}}>Fechar</button>
            </Modal>
       </>
     )
 }
 
-Modal.setAppElement('body')   
+Modal.setAppElement('body') 
